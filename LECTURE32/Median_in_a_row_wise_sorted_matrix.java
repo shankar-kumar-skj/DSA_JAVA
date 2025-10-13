@@ -26,8 +26,24 @@ public class Median_in_a_row_wise_sorted_matrix {
     }
 
     int findSmallerElements(int matrix[][],int assumedMedian){
+        int noOfSmallerElements=0;
         for (int i=0;i<matrix.length;i++){
-
+            // matrix[i] -> 0,1,2
+            // apply binary search on matrix[i]
+            int start=0;
+            int end=matrix[i].length-1;
+            while(start<=end){
+                int mid=start+(end-start)/2;
+                if(matrix[i][mid]<=assumedMedian){
+                    start=mid+1;
+                }
+                else{
+                    end =mid-1;
+                }
+            }
+            // start
+            noOfSmallerElements+=start;
         }
+        return noOfSmallerElements;
     }
 }
