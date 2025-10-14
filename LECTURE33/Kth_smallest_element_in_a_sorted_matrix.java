@@ -5,7 +5,7 @@ public class Kth_smallest_element_in_a_sorted_matrix {
         // code here
         int R = mat.length;          // Number of rows
         int C = mat[0].length;       // Number of columns 
-        int N=R*C; // TOTAL ELEMENT
+        // int N=R*C; // TOTAL ELEMENT
         int requiredSmallerElement=k-1; // N/2;
         int start=mat[0][0];
         int end=mat[R-1][C-1];
