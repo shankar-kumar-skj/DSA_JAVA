@@ -5,6 +5,8 @@ public class Selection_sort {
         int arr[]={3,5,2,6,6,87,99,23,44,12,7};
         selectionSort(arr);
         printArray(arr, "sorted array");
+        biDirectionalSelectionSort(arr);
+        printArray(arr, "sorted array");
     }
     public static void selectionSort(int arr[]){
         int n=arr.length;
