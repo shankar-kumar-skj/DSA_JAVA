@@ -35,4 +35,36 @@ public class Selection_sort {
             }
         }
     }
+
+    // BI-DIRECTIONAL SELECTION SORT
+    public static void biDirectionalSelectionSort(int arr[]){
+        int n=arr.length;
+        int k=n-1;
+        for(int i=0;i<k;i++){
+            int minEl=arr[i];
+            int minIndex=i;
+            int maxEl=arr[i];
+            int maxIndex=i;
+            for(int j=i+1;j<=k;j++){
+                if(arr[j]<minEl){
+                    minEl=arr[j];
+                    minIndex=j;
+                }
+                else if(arr[j]>maxEl){
+                    maxEl=arr[j];
+                    maxIndex=j;
+                }
+                }
+                // swap min element
+                swap(arr,i,minIndex);  
+                if(maxEl==arr[minIndex]){
+                    swap(arr,k,minIndex);
+                }
+                else{
+                    // swap max element
+                    swap(arr,i,maxIndex);
+                }
+                k--;
+        }
+    }
 }
