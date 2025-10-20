@@ -4,9 +4,9 @@ public class Selection_sort {
     public static void main(String args[]){
         int arr[]={3,5,2,6,6,87,99,23,44,12,7};
         selectionSort(arr);
-        printArray(arr, "sorted array");
+        printArray(arr, "selectionSort sorted array");
         biDirectionalSelectionSort(arr);
-        printArray(arr, "sorted array");
+        printArray(arr, "biDirectionalSelectionSort sorted array");
     }
     public static void selectionSort(int arr[]){
         int n=arr.length;
