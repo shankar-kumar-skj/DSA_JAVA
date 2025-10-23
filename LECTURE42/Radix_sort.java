@@ -32,7 +32,7 @@ public class Radix_sort {
             int val=arr[i];
             // /a-- & --a
             int countIndex=(arr[i]/digit)%10;
-            int countVal=--countArr[val];
+            int countVal=--countArr[countIndex];
             res[countVal]=val;
         }
         // copy back to the original array
