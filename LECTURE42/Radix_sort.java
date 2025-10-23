@@ -5,11 +5,11 @@ public class Radix_sort {
         System.out.println("COUNTING SORTING ALGO");
         int arr[]={2,65,33,55,76,54,3};
         printArray(arr, "original array");
-        int res[]=radixSort(arr);
-        printArray(res, "sorted array");
+        radixSort(arr);
+        printArray(arr, "sorted array");
 
     }
-    public static int radixSort(int arr[],int digit){
+    public static void countingSortWithDigit(int arr[],int digit){
         // find k
         int n=arr.length;
         int k=9;
@@ -31,10 +31,14 @@ public class Radix_sort {
         for(int i=n-1;i>=0;i--){
             int val=arr[i];
             // /a-- & --a
+            int countIndex=(arr[i]/digit)%10;
             int countVal=--countArr[val];
             res[countVal]=val;
         }
-        return res;
+        // copy back to the original array
+        for(int i=0;i<n;i++){
+            arr[i]=res[i];
+        }
     }
 
     // PRINT ARRAY
@@ -45,6 +49,23 @@ public class Radix_sort {
             if(i!=arr.length-1){
                 System.out.print(",");
             }
+        }
+    }
+
+    public static void radixSort(int arr[]){
+        int n=arr.length;
+        int maxEl=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(arr[i]>maxEl){
+                maxEl=arr[i];
+            }
+        }
+        if(maxEl == Integer.MIN_VALUE){
+            System.out.println("Empty array");
+            return;
+        }
+        for(int digit=1;maxEl/digit>0;digit*=10){
+            countingSortWithDigit(arr, digit);
         }
     }
 }
