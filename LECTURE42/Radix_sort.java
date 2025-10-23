@@ -2,7 +2,7 @@ package JAVA.SHASHCODE.LECTURE42;
 
 public class Radix_sort {
     public static void main(String args[]){
-        System.out.println("COUNTING SORTING ALGO");
+        System.out.println("RADIX SORTING ALGO");
         int arr[]={2,65,33,55,76,54,3};
         printArray(arr, "original array");
         radixSort(arr);
