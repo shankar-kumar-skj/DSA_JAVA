@@ -4,7 +4,7 @@ package JAVA.SHASHCODE.LECTURE48;
 // CHARACTER => 'a'
 // println("_____")=> it also contain in blank space
 // String is a class
-public class String {
+public class String_basic {
     public static void main(String[] args) {
         String name="shankar";
         System.out.println(name);
@@ -79,7 +79,7 @@ public class String {
         String name11="abhinav";
         String name12="abhinav";
         String name13="abhinav";
-        String name14=name11
+        String name14=name11;
         System.out.print(name11==name12); // false
         System.out.print(name12==name13); // false
         System.out.print(name13==name14); // false
@@ -97,5 +97,6 @@ public class String {
         String name15= "abhinav";
         String name16="abhinav";
         System.out.print(name16.equals(name15)); 
+        
     }
 }
