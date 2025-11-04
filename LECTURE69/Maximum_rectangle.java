@@ -16,7 +16,7 @@ public class Maximum_rectangle {
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[i].length;j++){
                 int val=matrix[i][j]-'0';
-                if(matrix[i][j]==0){
+                if(val==0){
                     heights[j]=0;
                 }
                 else{
