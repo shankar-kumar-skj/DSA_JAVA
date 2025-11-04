@@ -27,21 +27,22 @@ public class Longest_valid_parentheses {
 
     // using custom stack
     public int longestValidParentheses(String s) {
-        Stack<Integer> stack=new Stack<>();
+        int stack[]=new int[s.length()+1];
+        int index=-1;
         int max=0;
-        stack.push(-1);
+        stack[++index]=-1;
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
             if(ch=='('){
-                stack.push(i); // index
+                stack[++index]=i;
             }
             else{
-                stack.pop();
-                if(stack.isEmpty()){
-                    stack.push(i);
+                index--;
+                if(index==-1){
+                    stack[++index]=i;
                 }
                 else{
-                max=Math.max(max,i-stack.peek());
+                max=Math.max(max,i-stack[index]);
                 }
             }
         }
