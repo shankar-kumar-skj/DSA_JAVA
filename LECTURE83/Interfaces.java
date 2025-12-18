@@ -1,8 +1,5 @@
 package JAVA.SHASHCODE.LECTURE83;
 
-import javafx.scene.effect.Shadow;
-import javafx.scene.shape.Shape;
-
 //  for earilear versions not JAVA - 8 OR JAVA - 9
 
 // interface needs implementation all methods implementation with body
