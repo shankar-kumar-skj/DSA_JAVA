@@ -38,9 +38,7 @@ class Outer{
     // member inner class
     class Inner{
         static int rollNumber;
-        // static String name;
-        // int rollNumber;
-        String name;
+        static String name;
         int data;
         Inner(){
             name="Inner";
@@ -124,7 +122,8 @@ class OuterNonStatic{
 }
 
 public class Nested_Class {
-    Outer obj1=new Outer();
+    public static void main(String[] args) {
+        Outer obj1=new Outer();
     Outer.Inner innerObject=obj1.new Inner();
 
     // obj1.displayData();
@@ -158,4 +157,5 @@ public class Nested_Class {
     // no need of object 
     OuterNonStatic.InnerSecondStatic obj2=new OuterNonStatic.InnerSecondStatic();
     
+    }
 }
