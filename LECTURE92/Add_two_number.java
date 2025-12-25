@@ -1,5 +1,15 @@
 package JAVA.SHASHCODE.LECTURE92;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
+
 public class Add_two_number {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head=null;
