@@ -53,10 +53,58 @@ public class Reverse_nodes_in_k_group {
             prevHead = currHead;
             currHead = cur;
         }
-        
+
         // link the last incomplete group and if last was complete currHead would be
         // null
         prevHead.next = currHead;
         return ansNode;
     }
 }
+
+
+// class Node
+// {
+//     int data;
+//     Node next;
+//     Node(int key)
+//     {
+//         data = key;
+//         next = null;
+//     }
+// }
+// */
+        
+
+// class Solution {
+//     public Node reverseKGroup(Node head, int k) {
+//         // code here
+//         Node prevHead=null;
+//         Node currHead=head;
+//         Node ansNode=null;
+//         while(currHead!=null){
+//             Node prev=null;
+//             Node cur=currHead;
+//             Node nextNode =null;
+
+//             // reverse k Groups
+//             int j=0;
+//             while(j<k && cur!=null){
+//                 nextNode=cur.next;
+//                 cur.next=prev;
+//                 prev=cur;
+//                 cur=nextNode;
+//                 j++;
+//             }
+//             if(prevHead==null){
+//                 ansNode=prev;
+//             }
+//             else{
+//                 prevHead.next=prev;
+//             }
+//             prevHead=currHead;
+//             currHead = cur;
+//         }
+       
+//         return ansNode;
+//     }
+// }
