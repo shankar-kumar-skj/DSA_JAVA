@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import JAVA.SHASHCODE.LECTURE109.MyHashMap;
+
 // hashmap => data structure that store key and value pair.
 // keys are unique
 // not follows any insertion order
@@ -54,7 +56,8 @@ class MyRanking {
 
 public class Hashmap {
     public static void main(String[] args) {
-        HashMap<Integer,String> myMap=new HashMap<>();
+        // HashMap<Integer,String> myMap=new HashMap<>();
+        MyHashMap<Integer,String> myMap=new MyHashMap<>();
 
         // put
         myMap.put(1,"E3");
@@ -72,27 +75,28 @@ public class Hashmap {
         // containsKey => element is exit in boolean form
         System.out.println(myMap.containsKey(1));
 
-        // getOrDefault => if value exist print value otherwise return message
-        System.out.println(myMap.getOrDefault(1,"always with me"));
+        // // getOrDefault => if value exist print value otherwise return message
+        // System.out.println(myMap.getOrDefault(1,"always with me"));
 
-        // replace => to update the value
-        myMap.replace(4, "shankarwa");
-        System.out.println(myMap);
+        // // replace => to update the value
+        // myMap.replace(4, "shankarwa");
+        // System.out.println(myMap);
 
-        // entrySet() to return all value
-        for(Map.Entry<Integer,String> entry: myMap.entrySet()){
-            System.out.println("Key -> "+entry.getKey());
-            System.out.println("Value -> "+entry.getValue());
-        }
+        // // entrySet() to return all value
+        // for(Map.Entry<Integer,String> entry: myMap.entrySet()){
+        //     System.out.println("Key -> "+entry.getKey());
+        //     System.out.println("Value -> "+entry.getValue());
+        // }
         
-        // KeySet() to return all value
-        for(Integer key: myMap.keySet()){
-            System.out.println("Key -> "+key);
-            System.out.println("Value -> "+myMap.get(key));
-        }
+        // // KeySet() to return all value
+        // for(Integer key: myMap.keySet()){
+        //     System.out.println("Key -> "+key);
+        //     System.out.println("Value -> "+myMap.get(key));
+        // }
 
         // college class code for hashMap
-        HashMap<Integer, Integer> collegeRankingMap=new HashMap<>();
+        // HashMap<Integer, Integer> collegeRankingMap=new HashMap<>();
+        MyHashMap<Integer, Integer> collegeRankingMap=new MyHashMap<>();
         collegeRankingMap.put(111,1);
         collegeRankingMap.put(312,2);
         collegeRankingMap.put(457,3);
@@ -101,7 +105,8 @@ public class Hashmap {
 
         System.out.println(collegeRankingMap.containsValue(1));
 
-        HashMap<MyCollege, MyRanking> collegeRankingMap2=new HashMap<>();
+        // HashMap<MyCollege, MyRanking> collegeRankingMap2=new HashMap<>();
+        MyHashMap<MyCollege, MyRanking> collegeRankingMap2=new MyHashMap<>();
         collegeRankingMap2.put(new MyCollege(111),new MyRanking(1));
         collegeRankingMap2.put(new MyCollege(312),new MyRanking(2));
         collegeRankingMap2.put(new MyCollege(457),new MyRanking(3));
