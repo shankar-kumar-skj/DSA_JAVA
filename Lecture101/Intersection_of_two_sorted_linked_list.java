@@ -1,4 +1,4 @@
-package JAVA.SHASHCODE.Lecture101;
+package JAVA.SHASHCODE.LECTURE101;
 
 class Node {
     int data;
