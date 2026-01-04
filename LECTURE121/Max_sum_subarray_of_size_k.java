@@ -2,6 +2,9 @@ package JAVA.SHASHCODE.LECTURE121;
 
 import java.util.ArrayList;
 
+// tc => O(n+k-k) => O(n)
+// sc => O(1)
+
 public class Max_sum_subarray_of_size_k {
     static long maximumSumSubarray(int k,ArrayList<Integer> Arr, int N){
         long maxSum=0;
