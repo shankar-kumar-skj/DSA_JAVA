@@ -1,5 +1,7 @@
 package JAVA.SHASHCODE.LECTURE126;
 
+import java.util.HashMap;
+
 public class Longest_substring_without_repeating_characters {
     public int lengthOfLongestSubstring(String s) {
         int windowStart=0;
