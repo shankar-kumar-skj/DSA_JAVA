@@ -2,6 +2,7 @@ package JAVA.SHASHCODE.LECTURE153;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 // recursion => explore all possibility and return to base case
@@ -129,5 +130,99 @@ public class Backtracking_all_concept {
         }
     }
 
-    // 45 min
+    // Leetcode => 17
+    // public List<String> letterCombinations(String digits) {
+    //     HashMap<Character,String> map=new HashMap<>();
+    //     map.put('2',"abc");
+    //     map.put('3',"def");
+    //     map.put('4',"ghi");
+    //     map.put('5',"jkl");
+    //     map.put('6',"mno");
+    //     map.put('7',"pqrs");
+    //     map.put('8',"tuv");
+    //     map.put('9',"wxyz");
+    //     List<String> res=new ArrayList<>();
+    //     backtracking1(0,digits,res,"",map);
+    //     return res;
+    // }
+
+    // // digits ="23"
+    // private void backtracking1(int index,String digits,List<String> res,String current,HashMap<Character,String> map){
+    //     // base case
+    //     if(index == digits.length()){
+    //         res.add(current);
+    //         return;
+    //     }
+    //     char digit=digits.charAt(index);
+    //     String letters=map.get(digit);
+    //     for(int i=0;i<letters.length();i++){
+    //         // current = current+letters.charAt(i);
+    //         // backtracking1(index+1, digits, res, current, map);
+    //         // current=current.substring(0,current.length()-1);
+    //         // or
+    //         backtracking1(index+1, digits, res, current, map);
+    //     }
+    // }
+
+    // leetcode => 17
+    // using string builder
+    // TC => K^N (K = 3 or 4)
+    // SC => 
+
+    public List<String> letterCombinations(String digits) {
+        HashMap<Character,String> map=new HashMap<>();
+        map.put('2',"abc");//k=3
+        map.put('3',"def");
+        map.put('4',"ghi");
+        map.put('5',"jkl");
+        map.put('6',"mno");
+        map.put('7',"pqrs");//k=4
+        map.put('8',"tuv");
+        map.put('9',"wxyz");
+        List<String> res=new ArrayList<>();
+        backtracking1(0,digits,res,new StringBuilder(""),map);
+        return res;
+    }
+
+    // digits ="23"
+    private void backtracking1(int index,String digits,List<String> res,StringBuilder current,HashMap<Character,String> map){
+        // base case
+        if(index == digits.length()){
+            res.add(current.toString());
+            return;
+        }
+        char digit=digits.charAt(index);
+        String letters=map.get(digit);
+        for(int i=0;i<letters.length();i++){
+            current.append(letters.charAt(i));
+            backtracking1(index+1, digits, res, current, map);
+            current.deleteCharAt(current.length()-1);
+        }
+    }
+
+    // LEETCODE => 22
+    // TC => CATALEAN NUMBER (N=1 => 1,N=2 => 2, N=3 => 5, ...) =>(2N) X (4^N)/(N^(3/2)) => (4^N)/(N^(1/2))
+    public List<String> generateParenthesis(int n) {
+        List<String> res=new ArrayList<>();
+        backtracking3(res, new StringBuilder(""), n, 0, 0);
+        return res;
+
+    }
+    private void backtracking3(List<String>res,StringBuilder current,int n,int open,int close){
+        // base case
+        if(open==n && close==n){
+            res.add(current.toString());
+            return;
+        }
+        if(open<n){
+            current.append('(');
+            backtracking3(res, current, n, open+1, close);
+            current.deleteCharAt(current.length()-1);
+        }
+        if(close<n && close<open){
+            current.append(')');
+            backtracking3(res, current, n, open, close+1);
+            current.deleteCharAt(current.length()-1);
+        }
+    }
 }
