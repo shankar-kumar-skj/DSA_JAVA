@@ -228,6 +228,115 @@ public class Backtracking_all_concept {
 
     // LEETCODE => 39
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        
+        List<Integer> current = new ArrayList<>();
+        List<List<Integer>> res=new ArrayList<>();
+        backtrack(0, current, res, candidates, target);
+        return res;
+    }
+    private void backtrack(int index,List<Integer> current,List<List<Integer>> res,int[] candidates, int target){
+        // base case
+        if(target == 0){
+            res.add(new ArrayList<>(current));
+            return;
+        }
+        if(index == candidates.length){
+            return;
+        }
+        // pick
+        if(candidates[index]<=target){
+            current.add(candidates[index]);
+            backtrack(index, current, res, candidates, target-candidates[index]);
+            current.remove(current.size()-1);
+        }
+        // no pick
+        backtrack(index+1, current, res, candidates, target);
+    }
+
+
+    // Leetcode => 40
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<Integer> current = new ArrayList<>();
+        List<List<Integer>> res=new ArrayList<>();
+        Arrays.sort(candidates);
+        backtrack1(0, current, res, candidates, target);
+        return res;
+    }
+    private void backtrack1(int index,List<Integer> current, List<List<Integer>> res,int[] candidates, int target){
+        // base case
+        int n=candidates.length;
+        if(target == 0){
+            res.add(new ArrayList<>(current));
+            return;
+        }
+
+        for(int i=index;i<n;i++){
+            if((i==index || candidates[i]!=candidates[i-1]) && (candidates[i]<=target)){
+                current.add(candidates[i]);
+                backtrack1(i+1, current, res, candidates, target-candidates[i]);
+                current.remove(current.size()-1);
+            }
+        }
+    }
+
+
+    // Leetcode => 51 N Queen
+    public List<List<String>> solveNQueens(int n) {
+        char board[][]=new char[n][n];
+        // fill with
+        for(int i=0;i<n;i++){
+            Arrays.fill(board[i],'.');
+        }
+        List<List<String>> res=new ArrayList<>();
+        backtrack4(0,res,board);
+        return res;
+    }
+    private void backtrack4(int col,List<List<String>> res, char board[][]){
+        // base case
+        int n=board.length;
+        if(col == n){
+            constructRes(board,res);
+            return;
+        }
+        for(int row=0;row<n;row++){
+            if(isSafe(board,row,col)){
+                board[row][col]='Q';
+                backtrack4(col+1,res,board);
+                board[row][col]='.';
+            }
+        }
+    }
+    private boolean isSafe(char board[][],int r,int c){
+        int n=board.length;
+        for(int k=1;k<=c;k++){
+            int col=c-k;
+            // upper diagonal
+            int row=r-k;
+            if(row>=0){
+                if(board[row][col]=='Q'){
+                    return false;
+                }
+            }
+            // lower diagonal
+            row= r+k;
+            if(row<n){
+                if(board[row][col]=='Q'){
+                    return false;
+                }
+            }
+            // current row
+            if(board[r][col]=='Q'){
+                return false;
+            }
+        }  
+        return true;
+    }
+
+    private void constructRes(char board[][],List<List<String>> res){
+        List <String> current=new ArrayList<>();
+        for(int i=0;i<board.length;i++){
+            String row=new String(board[i]);
+            current.add(row);
+        }
+        res.add(current);
     }
 }
