@@ -339,4 +339,92 @@ public class Backtracking_all_concept {
         }
         res.add(current);
     }
+
+    // 1:58:00 backtracking
+    
+    // leetcode => 37 sudoku sover
+    // TC => 9^M => (max) 9 ^ 81 
+    public void solveSudoku(char[][] board) {
+        backtrack5(board,0,0);
+    }
+    private boolean backtrack5(char board[][],int row,int col){
+        // base case 
+        if(col==9){
+            col=0;
+            row=row+1;
+        }
+        if(row==9){
+            return true;
+        }
+
+        // if already filled
+        if(board[row][col]!='.'){
+            return backtrack5(board, row, col+1);
+        }
+
+        for(int d=1;d<=9;d++){
+            char digit=(char)(d+'0');
+            if(isPlacementPosible(digit,board,row,col)){
+                board[row][col]=digit;
+                if(backtrack5(board, row, col+1)){
+                    return true;
+                }
+                board[row][col]='.';
+            }
+        }
+        return false;
+    }
+    private boolean isPlacementPosible(char digit,char board[][],int row,int col){
+        // current row
+        // current col
+        // grid
+        for(int j=0;j<9;j++){
+            // current row
+            if(board[row][j]==digit) return false;
+
+            // current col
+            if(board[j][col]==digit) return false;
+
+            // grid
+            int r=3*(row/3) + (j/3);
+            int c=3*(col/3) + (j%3);
+
+            if(board[r][c]==digit) return false;
+        }
+        return true;
+    }
+
+    // leetcode => 131 
+    public List<List<String>> partition(String s) {
+        List<List<String>> res= new ArrayList<>();
+        List<String> current = new ArrayList<>();
+        backtrack6(0,s,res,current);
+        return res;
+    }
+    private void backtrack6(int partIndex,String s,List<List<String>> res, List<String> current){
+        // base case
+        int n=s.length();
+        if(partIndex == n){
+            res.add(new ArrayList<>(current));
+            return;
+        }
+        for(int end=partIndex;end<n;end++){
+            // partIndex,end,partIndex,end+1,...
+            if(isPalindrome(partIndex,end,s)){
+                current.add(s.substring(partIndex,end+1));
+                backtrack6(end+1, s, res, current);
+                current.remove(current.size()-1);
+            }
+        }
+    }
+    private boolean isPalindrome(int start,int end,String s){
+        while(start<end){
+            if(s.charAt(start)!=s.charAt(end)){
+                return false;
+            }
+            start ++;
+            end--;
+        }
+        return true;
+    }
 }
