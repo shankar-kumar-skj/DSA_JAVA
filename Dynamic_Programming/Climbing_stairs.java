@@ -4,7 +4,7 @@ package JAVA.SHASHCODE.Dynamic_Programming;
 
 public class Climbing_stairs {
     // // base case
-    // public int climbStrairs(int n){
+    // public int climbStairs(int n){
     //     // base case
     //     if(n<=2){
     //         return n;
@@ -18,7 +18,7 @@ public class Climbing_stairs {
 // // Top down approach DP :-
 // class Solution{
 //     // 2^n
-//     public int climbStrairs(int n){
+//     public int climbStairs(int n){
 //         int dp[]=new int[n+1];
 //         Arrays.fill(dp,-1);
 //         return recur(n, dp);
@@ -43,7 +43,7 @@ public class Climbing_stairs {
 // Bottom Up approach DP :-
 class Solution{
     // 2^n
-    public int climbStrairs(int n){
+    public int climbStairs(int n){
         if(n<=2){
             return n;
         }
@@ -56,10 +56,10 @@ class Solution{
         return dp[n];
     }
 }
-// Bottom Up approach DP :-
+// Bottom Up approach DP : -
 class Solution_2{
     // 2^n
-    public int climbStrairs(int n){
+    public int climbStairs(int n){
         if(n<=2){
             return n;
         }
