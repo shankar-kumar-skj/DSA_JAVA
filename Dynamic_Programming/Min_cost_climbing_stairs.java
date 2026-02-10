@@ -56,7 +56,9 @@ public class Min_cost_climbing_stairs {
 //     }
 
 
-// // Without Dp
+// // Bottom Up space optimize 
+// TC => O(N)
+// SC => O(1)
     public int minCostClimbingStairs(int[] cost) {
         int n=cost.length;
         int prev2=0;
