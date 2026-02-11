@@ -1,6 +1,6 @@
 package JAVA.SHASHCODE.Dynamic_Programming;
 
-import java.util.Arrays;
+// import java.util.Arrays;
 
 public class Pick_No_pick {
     // // leetcode 198
