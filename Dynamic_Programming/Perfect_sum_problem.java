@@ -88,36 +88,72 @@ public class Perfect_sum_problem {
     // return dp[index][target];
     // }
 
-    // DP => Tabulation (Bootom Up Approach)
+    // // DP => Tabulation (Bootom Up Approach)
+    // public int perfectSum(int[] nums, int target) {
+    //     // code here
+    //     int n = nums.length;
+    //     int dp[][] = new int[n][target + 1];
+
+    //     for (int t = 0; t < target + 1; t++) {
+    //         if (t == 0 && nums[0] == 0) {
+    //             dp[0][t] = 2;
+    //         } else if (t == 0) {
+    //             dp[0][t] = 1;
+    //         }
+
+    //         else if (t == nums[0]) {
+    //             dp[0][t] = 1;
+    //         } else {
+    //             dp[0][t] = 0;
+    //         }
+    //     }
+
+    //     for (int i = 1; i < n; i++) {
+    //         for (int j = 0; j < target + 1; j++) {
+    //             int pick = 0;
+    //             if (nums[i] <= j) {
+    //                 pick = dp[i-1][j - nums[i]];
+    //             }
+    //             int noPick = dp[i-1][j];
+    //             dp[i][j] = pick + noPick;
+    //         }
+    //     }
+    //     return dp[n-1][target];
+    // }
+
+
+    // DP => Optimization approach
     public int perfectSum(int[] nums, int target) {
         // code here
         int n = nums.length;
-        int dp[][] = new int[n][target + 1];
+        int prev[] = new int[target + 1];
 
         for (int t = 0; t < target + 1; t++) {
             if (t == 0 && nums[0] == 0) {
-                dp[0][t] = 2;
+                prev[t] = 2;
             } else if (t == 0) {
-                dp[0][t] = 1;
+                prev[t] = 1;
             }
 
             else if (t == nums[0]) {
-                dp[0][t] = 1;
+                prev[t] = 1;
             } else {
-                dp[0][t] = 0;
+                prev[t] = 0;
             }
         }
 
         for (int i = 1; i < n; i++) {
+            int cur[]= new int[target+1];
             for (int j = 0; j < target + 1; j++) {
                 int pick = 0;
                 if (nums[i] <= j) {
-                    pick = dp[i-1][j - nums[i]];
+                    pick = prev[j - nums[i]];
                 }
-                int noPick = dp[i-1][j];
-                dp[i][j] = pick + noPick;
+                int noPick = prev[j];
+                cur[j] = pick + noPick;
             }
+            prev=cur;
         }
-        return dp[n-1][target];
+        return prev[target];
     }
 }
