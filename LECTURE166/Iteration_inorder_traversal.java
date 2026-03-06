@@ -28,15 +28,17 @@ public class Iteration_inorder_traversal {
         TreeNode node = root;
         while(node != null || !stack.isEmpty()){
             // move to the left
-            while(node!=null){
+            if(node!=null){
                 stack.push(node);
                 node=node.left;
             }
-            // print the root
-            node= stack.pop();
-            res.add(node.val);
-            // move to the right
-            node= node.right;
+            else{
+                // print the root
+                node= stack.pop();
+                res.add(node.val);
+                // move to the right
+                node= node.right;
+            }
         }
         return res;
     }
