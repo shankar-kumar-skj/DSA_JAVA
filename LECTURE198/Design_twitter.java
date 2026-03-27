@@ -26,6 +26,7 @@ class User{
     User(int userId){
         this.userId=userId;
         followers=new HashSet<>();
+        followers.add(userId); //add self also as follower
         tweets=new LinkedList<>();
     }
     public void addTweet(Tweet t){
@@ -48,38 +49,45 @@ public class Design_twitter {
 
     public void postTweet(int userId,int tweetId){
         timeCounter++;
+        // constant operation because of insertion at the head in linkedList
         if(!userMap.containsKey(userId)){
             userMap.put(userId,new User(userId));
         }
+        // constant operation because of insertion at the head in linkedList
         User user = userMap.get(userId);
         user.addTweet(new Tweet(timeCounter,tweetId));
     }
 
     public List<Integer> getNewsFeed(int userId){
+        // constant operation because of checking in map
         if(!userMap.containsKey(userId)){
             return new ArrayList<>();
         }
         PriorityQueue<Tweet> pq=new PriorityQueue<>();
         // Add self tweets + followers tweets
         User user=userMap.get(userId);
-        for(int followerId : user.followers){
+        // N*(10 log 10 ) 
+        for(int followerId : user.followers){ //(N)
             int count=0;
-            for(Tweet tweet : userMap.get(followerId).tweets){
-                pq.offer(tweet);
+            for(Tweet tweet : userMap.get(followerId).tweets){ // T => max t=10
+                pq.offer(tweet); // log(T) => max t=10
                 count++;
                 if(count>10){
                     break; 
                 }
             }
         }
-        int count=0;
-        for(Tweet tweet : user.tweets){
-            pq.offer(tweet);
-            count++;
-            if(count>10){
-                break; 
-            }
-        }
+        // // 10 log(10)
+        // int count=0;
+        // for(Tweet tweet : user.tweets){
+        //     pq.offer(tweet);
+        //     count++;
+        //     if(count>10){
+        //         break; 
+        //     }
+        // }
+
+        // 10 log(10)
         List<Integer> res=new ArrayList<>();
         int index=0;
         while(!pq.isEmpty()&& index<10){
@@ -91,17 +99,19 @@ public class Design_twitter {
     }
 
     public void follow(int followerId,int followeeId){
+        // constant operation because of HashSet
         if(!userMap.containsKey(followerId)){
             userMap.put(followerId,new User(followerId));
         }
         if(!userMap.containsKey(followeeId)){
-            userMap.put(followeeId,new User(followerId));
+            userMap.put(followeeId,new User(followeeId));
         }
         User user=userMap.get(followerId);
         user.addFollower(followeeId);
     }
 
     public void unfollow(int followerId,int followeeId){
+        // constant operation because of HashSet
         if(!userMap.containsKey(followerId) || !userMap.containsKey(followerId)){
             return;
         }
