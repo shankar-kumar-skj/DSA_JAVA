@@ -1,6 +1,8 @@
 package JAVA.SHASHCODE.LECTURE200;
 
-import java.util.PriorityQueue;
+import java.util.*;
+
+// TC => O(N + 3N log(N))
 
 public class Minimum_cost_of_roop {
     public static int minCost(int[] arr){
