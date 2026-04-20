@@ -1,5 +1,7 @@
 package JAVA.SHASHCODE.LECTURE227;
 
+import javax.swing.plaf.synth.SynthStyle;
+
 // Floyd Warshall Alogrithm :-
 // 1. distance from each city from every city shortest Path
 // 2. to try all possibility
@@ -32,6 +34,12 @@ public class Floyd_warshall_algorithm {
                     // floyd warshal
                     matrix[i][j]=Math.min(matrix[i][j],matrix[i][k]+matrix[k][j]);
                 }
+            }
+        }
+
+        for(int i=0;i<n;i++){
+            if(matrix[i][i]<0){
+                System.out.print("Negative Cycle");
             }
         }
 
